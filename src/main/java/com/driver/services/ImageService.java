@@ -20,7 +20,9 @@ public class ImageService {
         image.setDescription(description);
         image.setDimensions(dimensions);
         image.setBlog(blog);
-        imageRepository2.save(image);
+        blog.getImageList().add(image);
+        blogRepository2.save(blog);  //here we are saving in blog repo and due to cascading effect
+                                     // it automatically save the image(child)
         return image;
 
     }
@@ -44,12 +46,13 @@ public class ImageService {
         int image_length = Integer.parseInt(screenArray[0]);
         int image_breadth = Integer.parseInt(screenArray[1]);
 
+        return  numberOfImages( screen_length,screen_breadth,image_length, image_breadth);
+    }
+
+    public int numberOfImages ( int screen_length,int screen_breadth,int image_length,int image_breadth){
         int len1 = screen_length/image_length;
         int len2 = screen_breadth/image_breadth;
 
         return len1*len2;
-
-
-
     }
 }

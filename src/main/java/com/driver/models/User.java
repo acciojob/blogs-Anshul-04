@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="user")
+@Table(name="User")
 public class User{
 
     @Id   // It is wriiten on the attribute which has to become primary key.
