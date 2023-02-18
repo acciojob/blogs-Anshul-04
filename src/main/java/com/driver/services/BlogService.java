@@ -30,6 +30,7 @@ public class BlogService {
         blog.setUser(user);
         blog.setTitle(title);
         blog.setContent(content);
+        blog.setPubDate(new Date());
 
         //updating the blog list info of user also
         List<Blog> currentBLogs = user.getBlogList();
