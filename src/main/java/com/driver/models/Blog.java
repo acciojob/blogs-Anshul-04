@@ -49,6 +49,9 @@ public class Blog{
     }
 
     public Blog(User user, String title, String content) {
+        this.user = user;
+        this.title = title;
+        this.content = content;
     }
 
     public int getId() {

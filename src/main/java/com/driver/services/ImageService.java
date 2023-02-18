@@ -16,10 +16,8 @@ public class ImageService {
     public Image addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog
         Blog blog = blogRepository2.findById(blogId).get();
-        Image image = new Image();
-        image.setDescription(description);
-        image.setDimensions(dimensions);
-        image.setBlog(blog);
+        Image image = new Image(blog,description,dimensions);
+
         blog.getImageList().add(image);
         blogRepository2.save(blog);  //here we are saving in blog repo and due to cascading effect
                                      // it automatically save the image(child)
@@ -34,17 +32,17 @@ public class ImageService {
     public int countImagesInScreen(Integer id, String screenDimensions) {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
 
-        String [] screenArray = screenDimensions.split("X");
+        String [] screen_Array = screenDimensions.split("X");
         Image image = imageRepository2.findById(id).get();
 
         String imageDimension = image.getDimensions();
-        String [] imageArray = imageDimension.split("X");
+        String [] image_Array = imageDimension.split("X");
 
-        int screen_length = Integer.parseInt(screenArray[0]);
-        int screen_breadth = Integer.parseInt(screenArray[1]);
+        int screen_length = Integer.parseInt(screen_Array[0]);
+        int screen_breadth = Integer.parseInt(screen_Array[1]);
 
-        int image_length = Integer.parseInt(screenArray[0]);
-        int image_breadth = Integer.parseInt(screenArray[1]);
+        int image_length = Integer.parseInt(image_Array[0]);
+        int image_breadth = Integer.parseInt(image_Array[1]);
 
         return  numberOfImages( screen_length,screen_breadth,image_length, image_breadth);
     }
