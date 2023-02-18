@@ -22,6 +22,13 @@ public class Image {
     public Image() {
     }
 
+    public Image(int id, String description, String dimension, Blog blog) {
+        this.id = id;
+        this.description = description;
+        this.dimension = dimension;
+        this.blog = blog;
+    }
+
     public int getId() {
         return id;
     }

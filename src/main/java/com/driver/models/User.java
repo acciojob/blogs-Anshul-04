@@ -24,7 +24,8 @@ public class User{
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Blog> blogList = new ArrayList<>();  //here,we are having list of blogs by a user
 
-
+    public User() {
+    }
 
     public User(String username, String password) {
         this.username = username;
